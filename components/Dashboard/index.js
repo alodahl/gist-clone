@@ -7,9 +7,15 @@ export default class Dashboard extends React.Component {
     this.state = {};
   }
 
+  dashboardStyle = {
+    padding: '8px',
+  }
+
     render() {
         return (
-          <div className="dashboard">
+          <div
+            className="dashboard"
+            style={this.dashboardStyle}>
             <Form/>
           </div>
         );

@@ -12,17 +12,28 @@ export default class Form extends React.Component {
 
   fieldsetStyle = {
     border: 'none',
+    padding: '10px 0'
   }
 
   inputStyle = {
     height: '34px',
     width: '980px',
+    borderRadius: '4px 4px 0 0',
+    border: '1px solid #ccc',
+  }
+
+  descriptionStyle = {
+    ...this.inputStyle,
+    backgroundColor: '#eee',
+    borderRadius: '4px',
   }
 
   textareaStyle = {
       borderColor: '#ccc',
-      width: '980px',
+      width: '978px',
       height: '352px',
+      borderTop: 'none',
+      borderRadius: '0 0 4px 4px',
   };
 
     render() {
@@ -31,7 +42,7 @@ export default class Form extends React.Component {
               <fieldset className="form__description" style={this.fieldsetStyle}>
                 <label htmlFor="description" className="form__description--label"/>
                 <input
-                  style={this.inputStyle}
+                  style={this.descriptionStyle}
                   placeholder="Gist description..."
                   className="form__description--input"
                   id="description"
@@ -45,8 +56,6 @@ export default class Form extends React.Component {
                   className="form__filename--input"
                   id="filename"
                 />
-              </fieldset>
-              <fieldset className="form__textarea" style={this.fieldsetStyle}>
                 <label htmlFor="textarea" className="form__textarea--label"/>
                 <textarea
                   placeholder=""
