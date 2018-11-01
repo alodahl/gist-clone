@@ -4,6 +4,8 @@
   "description": "a quick CRUD project",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "mongoose": "^5.3.8",
     "next": "^7.0.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0"

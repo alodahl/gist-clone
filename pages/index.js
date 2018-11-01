@@ -1,1 +1,3 @@
-export default () => <div>Gist Clone</div>
+import Dashboard from "../components/Dashboard"
+
+export default () => <div><Dashboard/></div>
