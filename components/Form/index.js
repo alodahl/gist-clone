@@ -34,6 +34,7 @@ export default class Form extends React.Component {
       height: '352px',
       borderTop: 'none',
       borderRadius: '0 0 4px 4px',
+      padding: '10px 20px',
   };
 
     render() {
@@ -59,12 +60,11 @@ export default class Form extends React.Component {
                 <label htmlFor="textarea" className="form__textarea--label"/>
                 <textarea
                   placeholder=""
-                  value=""
                   type="text"
                   id="textarea"
                   className="textarea"
                   style={this.textareaStyle}
-                  autofocus
+                  autoFocus
                 />
               </fieldset>
           </div>
