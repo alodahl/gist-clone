@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 // const passport = require('passport');
 
-const {Timer} = require('./models');
+const {Gist} = require('./models');
 
 const router = express.Router();
 
@@ -11,10 +11,10 @@ const jsonParser = bodyParser.json();
 
 router.get('/',
 // passport.authenticate('jwt', {session: false}), (req, res) => {
-  Timer
+  Gist
     .find({user: req.user.id})
-    .then(timers => {
-      res.json(timers.map(timer => timer.apiRepr()));
+    .then(gists => {
+      res.json(gists.map(gist => gist.apiRepr()));
     })
     .catch(err => {
       console.error(err);
@@ -24,9 +24,9 @@ router.get('/',
 
 router.get('/:id',
 // passport.authenticate('jwt', {session: false}), (req, res) => {
-  Timer
+  Gist
     .findById(req.params.id)
-    .then(timer => res.json(timer.apiRepr()))
+    .then(gist => res.json(gist.apiRepr()))
     .catch(err => {
       console.error(err);
       res.status(500).json({error: 'something went horribly awry'});
@@ -46,7 +46,7 @@ router.post('/',
     }
   }
 
-  Timer
+  Gist
     .create({
       label: req.body.label,
       category: req.body.category,
@@ -54,7 +54,7 @@ router.post('/',
       projectNotes: req.body.projectNotes,
       user: req.user.id
     })
-    .then(timer => res.status(201).json(timer.apiRepr()))
+    .then(gist => res.status(201).json(gist.apiRepr()))
     .catch(err => {
         console.error(err);
         res.status(500).json({error: 'Something went wrong'});
@@ -64,7 +64,7 @@ router.post('/',
 
 router.delete('/:id',
 // passport.authenticate('jwt', {session: false}), (req, res) => {
-  Timer
+  Gist
     .findByIdAndRemove(req.params.id)
     .then(() => {
       res.status(204).json({message: 'success'});
@@ -91,16 +91,16 @@ router.put('/:id',
     }
   });
 
-  Timer
+  Gist
     .findByIdAndUpdate(req.params.id, {$set: updated}, {new: true})
-    .then(updatedTimer => res.json(updatedTimer))
+    .then(updatedGist => res.json(updatedGist))
     .catch(err => res.status(500).json({message: 'Something went wrong'}));
 });
 
-router.put('/:timerId/log',
+router.put('/:gistId/log',
 // passport.authenticate('jwt', {session: false}), (req, res) => {
 
-  if (!(req.params.timerId && req.body.timerId && req.params.timerId === req.body.timerId)) {
+  if (!(req.params.gistId && req.body.gistId && req.params.gistId === req.body.gistId)) {
     return res.status(400).json({
       error: 'Request path id and request body id values must match'
     });
@@ -123,13 +123,13 @@ router.put('/:timerId/log',
      endDate: req.body.endDate
    };
 
-  Timer
-    .findById(req.params.timerId)
-    .then(timer => {
-      timer.logs.push(newLogEntry);
-      return timer.save()
+  Gist
+    .findById(req.params.gistId)
+    .then(gist => {
+      gist.logs.push(newLogEntry);
+      return gist.save()
     })
-    .then(updatedTimer => res.status(204).end())
+    .then(updatedGist => res.status(204).end())
     .catch(err => res.status(500).json({message: 'Something went wrong'}));
 });
 
