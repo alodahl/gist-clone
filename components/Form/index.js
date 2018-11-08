@@ -3,11 +3,7 @@ import React from "react";
 export default class Form extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      description: "",
-      filename: "",
-      textarea: ""
-    };
+    this.state = {};
   }
 
   formStyle = {
@@ -20,8 +16,9 @@ export default class Form extends React.Component {
   }
 
   inputStyle = {
+    boxSizing: "border-box",
     height: '34px',
-    width: '980px',
+    width: "100%",
     borderRadius: '4px 4px 0 0',
     border: '1px solid #ccc',
   }
@@ -33,33 +30,14 @@ export default class Form extends React.Component {
   }
 
   textareaStyle = {
+      boxSizing: "border-box",
       borderColor: '#ccc',
-      width: '978px',
+      width: "100%",
       height: '352px',
       borderTop: 'none',
       borderRadius: '0 0 4px 4px',
       padding: '10px 20px',
   };
-
-  handleDescription(e) {
-    e.preventDefault();
-    this.setState({ description: e.target.value });
-  }
-
-  handleFilename(e) {
-    e.preventDefault();
-    this.setState({ filename: e.target.value });
-  }
-
-  handleTextarea(e) {
-    e.preventDefault();
-    this.setState({ textarea: e.target.value });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    console.log(this.state);
-  }
 
     render() {
         return (
@@ -71,8 +49,9 @@ export default class Form extends React.Component {
                   placeholder="Gist description..."
                   className="form__description--input"
                   id="description"
-                  onChange={e => this.handleDescription(e)}
-                  value={this.state.description}
+                  onChange={this.props.handleDescription}
+                  value={this.props.description}
+                  required
                 />
               </fieldset>
               <fieldset className="form__filename" style={this.fieldsetStyle}>
@@ -82,8 +61,9 @@ export default class Form extends React.Component {
                   placeholder="Filename including extension..."
                   className="form__filename--input"
                   id="filename"
-                  onChange={e => this.handleFilename(e)}
-                  value={this.state.filename}
+                  onChange={this.props.handleFilename}
+                  value={this.props.filename}
+                  required
                 />
                 <label htmlFor="textarea" className="form__textarea--label"/>
                 <textarea
@@ -92,14 +72,15 @@ export default class Form extends React.Component {
                   id="textarea"
                   className="textarea"
                   style={this.textareaStyle}
-                  onChange={e => this.handleTextarea(e, "textarea")}
-                  value={this.state.textarea}
+                  onChange={this.props.handleTextarea}
+                  value={this.props.textarea}
+                  required
                   autoFocus
                 />
               </fieldset>
               <button
-                type="submit"
-                onClick={e => this.handleSubmit(e, "textarea")}
+                type="button"
+                onClick={this.props.handleSubmit}
               >
               Create public gist
               </button>
