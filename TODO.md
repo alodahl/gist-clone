@@ -4,15 +4,17 @@ Due date: Nov. 12
 
 ## Tasks:
 
-- map array as thumbnail links above form
-- replace form with current gist on submit
-- replace form with gist on thumbnail click
 - add edit button that brings back autofilled form with "update" instead of create on submit button
+- on form, check if file exists, them make sure to update instead of making new gist
 
 ## Complete
 
 - move state to dashboard so an array can be created
 - add navbar with "new gist" button leading to blank form
+- map array as thumbnail links above form
+- replace form with gist on thumbnail click
+- replace form with current gist on submit
+
 
 ## Primary Features:
 - [ ] Ability to create gists via a web interface

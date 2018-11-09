@@ -7,7 +7,7 @@ export default class Navbar extends React.Component {
   }
 
   navbarStyle = {
-    fontFamily: "Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol",
+    fontFamily: "Segoe UI,Helvetica,Arial,sans-serif",
     position: "absolute",
     top: "0",
     left: "0",
@@ -17,12 +17,10 @@ export default class Navbar extends React.Component {
     color: "white",
     lineHeight: "54px",
   }
-
   innerNavStyle = {
     // width: "980px",
     margin: "0 auto",
   }
-
   gistCloneStyle = {
     textAlign: "left",
     display: "inline",
@@ -30,7 +28,6 @@ export default class Navbar extends React.Component {
     fontWeight: "100",
     fontSize: "28px",
   }
-
   newGistStyle = {
     color: "white",
     float: "right",
