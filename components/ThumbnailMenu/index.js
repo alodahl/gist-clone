@@ -10,7 +10,8 @@ export default function ThumbnailMenu(props) {
     right: "0",
     height: "90px",
     backgroundColor: "#fafbfc",
-    overflowX: "scroll",
+    overflow: "auto",
+    whiteSpace: "nowrap",
   };
 
   const menuList = props.gists.map((gist, index) => {
@@ -21,7 +22,7 @@ export default function ThumbnailMenu(props) {
 
   return (
     <div style={menuStyle}>
-      {menuList}
+      {menuList.reverse()}
     </div>
   );
 
