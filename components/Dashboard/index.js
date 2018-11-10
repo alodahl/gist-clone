@@ -25,7 +25,9 @@ export default class Dashboard extends React.Component {
         description: "",
         filename: "",
         textarea: "",
-      }
+        new: true,
+      },
+      currentGistIndex: "",
     };
   }
 
@@ -45,17 +47,29 @@ export default class Dashboard extends React.Component {
       description: "",
       filename: "",
       textarea: "",
+      new: true,
       }
-     });
+    });
+     this.setState({ currentGistIndex: this.state.gists.length });
   }
 
   handleThumbnailClick(e) {
     e.preventDefault();
     let fileName = JSON.parse(e.target.getAttribute("fileName"));
-    console.log(fileName);
-    let clickedGist = this.state.gists.find( gist => gist.filename === fileName)
-    this.setState( {
-      currentGist: clickedGist } );
+    this.state.gists.find( (gist, index) => {
+      if ( gist.filename == fileName ) {
+      this.setState( {
+        currentGist: {
+          description: gist.description,
+          filename: gist.filename,
+          textarea: gist.textarea,
+          new: false,
+        }
+      } );
+      this.setState( { currentGistIndex: index });
+      return;
+      }
+    })
     this.setState({ toggleToGist: true });
   }
 
@@ -73,7 +87,15 @@ export default class Dashboard extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({ gists: [...this.state.gists, this.state.currentGist ]});
+    let index = this.state.currentGistIndex;
+    if (index !== ""){
+      let gists = this.state.gists;
+      gists[this.state.currentGistIndex] = this.state.currentGist;
+      gists[this.state.currentGistIndex].new = false;
+      this.setState({ gists });
+    } else {
+      this.setState({ gists: [...this.state.gists, this.state.currentGist ]});
+    }
     this.setState({ toggleToGist: true });
   }
 
@@ -81,6 +103,7 @@ export default class Dashboard extends React.Component {
     event.preventDefault();
     this.setState({ toggleToGist: false });
   }
+
 
     render() {
         return (

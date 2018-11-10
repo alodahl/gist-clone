@@ -3,9 +3,13 @@ import React from "react";
 export default class Form extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      filename: props.filename,
+      textarea: props.textarea,
+    };
   }
 
+  isEnabled = this.props.filename.length > 0 && this.props.textarea.length > 0;
   formStyle = {
     borderColor: 'none',
   }
@@ -38,9 +42,9 @@ export default class Form extends React.Component {
     borderRadius: '0 0 4px 4px',
     padding: '10px 20px',
   };
-  submitButtonStyle = {
+  enabledSubmitButton = {
     float: "right",
-    border: "1px solid #ccc",
+    border: "1px solid #586069",
     borderRadius: "4px",
     height: "34px",
     fontSize: "14px",
@@ -48,8 +52,28 @@ export default class Form extends React.Component {
     backgroundImage: "linear-gradient(-180deg,#fafbfc,#eff3f6 90%)",
     color: "#586069",
   };
+  updateButton = {
+    ...this.enabledSubmitButton,
+    backgroundImage: "linear-gradient(-180deg,#34d058,#28a745 90%)",
+  };
+  disabledSubmitButton = {
+    ...this.enabledSubmitButton,
+    border: "1px solid #bbb",
+    color: "#bbb",
+  };
 
     render() {
+
+      let submitEnabled = this.props.filename.length > 0 && this.props.textarea.length > 0;
+      let buttonStyle = function() {
+        if (submitEnabled && this.props.new){
+          return this.updateButton;
+        } else if (submitEnabled) {
+          return this.enabledSubmitButton;
+        } else {
+          return this.disabledSubmitButton;
+        }
+      }
         return (
           <form className="form" style={this.formStyle}>
               <fieldset className="form__description" style={this.fieldsetStyle}>
@@ -62,7 +86,6 @@ export default class Form extends React.Component {
                   id="description"
                   onChange={this.props.handleDescription}
                   value={this.props.description}
-                  maxlength="20"
                   required
                 />
               </fieldset>
@@ -76,7 +99,6 @@ export default class Form extends React.Component {
                   id="filename"
                   onChange={this.props.handleFilename}
                   value={this.props.filename}
-                  maxlength="20"
                   required
                   autoFocus
                 />
@@ -93,11 +115,12 @@ export default class Form extends React.Component {
                 />
               </fieldset>
               <button
-                type="button"
+                type="submit"
                 onClick={this.props.handleSubmit}
-                style={this.submitButtonStyle}
+                style={submitEnabled && this.props.new ? this.enabledSubmitButton : submitEnabled ? this.updateButton : this.disabledSubmitButton}
+                disabled={!submitEnabled}
               >
-              Create public gist
+              {this.props.new?"Create public gist":"Update public gist"}
               </button>
           </form>
         );

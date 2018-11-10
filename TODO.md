@@ -4,8 +4,8 @@ Due date: Nov. 12
 
 ## Tasks:
 
-- add edit button that brings back autofilled form with "update" instead of create on submit button
-- on form, check if file exists, them make sure to update instead of making new gist
+- Ability to view and update gists in a web browser using a unique URL
+- make menu scrollable
 
 ## Complete
 
@@ -14,10 +14,13 @@ Due date: Nov. 12
 - map array as thumbnail links above form
 - replace form with gist on thumbnail click
 - replace form with current gist on submit
+- make overflow thumbnail text ellipses
+- on form, check if file exists, them make sure to update instead of making new gist
+- add edit button that brings back autofilled form with "update" instead of create on submit button
 
 
 ## Primary Features:
-- [ ] Ability to create gists via a web interface
+- [X] Ability to create gists via a web interface
 - [ ] Ability to view and update gists in a web browser using a unique URL
 
 ## Potential Extra Features
