@@ -11,7 +11,7 @@ export default class Dashboard extends React.Component {
       toggleToGist: false,
       gists: [
         {
-          description: "woo",
+          description: "wu",
           filename: "tang",
           textarea: "clan",
         },
@@ -56,21 +56,23 @@ export default class Dashboard extends React.Component {
   handleThumbnailClick(e) {
     e.preventDefault();
     let fileName = JSON.parse(e.target.getAttribute("fileName"));
-    this.state.gists.find( (gist, index) => {
-      if ( gist.filename == fileName ) {
-      this.setState( {
-        currentGist: {
-          description: gist.description,
-          filename: gist.filename,
-          textarea: gist.textarea,
-          new: false,
-        }
-      } );
-      this.setState( { currentGistIndex: index });
-      return;
+    let gistIndex;
+    let gist = this.state.gists.find( function(gist, index) {
+      if ( gist.filename === fileName ) {
+        gistIndex = index;
+        return gist;
       }
     })
     this.setState({ toggleToGist: true });
+    this.setState( {
+      currentGist: {
+        description: gist.description,
+        filename: gist.filename,
+        textarea: gist.textarea,
+        new: false,
+      }
+    } );
+    this.setState( { currentGistIndex: gistIndex });
   }
 
   handleDescription(e) {

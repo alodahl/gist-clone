@@ -5,6 +5,7 @@ Due date: Nov. 12
 ## Tasks:
 
 - Ability to view and update gists in a web browser using a unique URL
+- add enzyme tests
 
 ## Complete
 
@@ -17,6 +18,7 @@ Due date: Nov. 12
 - on form, check if file exists, them make sure to update instead of making new gist
 - add edit button that brings back autofilled form with "update" instead of create on submit button
 - make menu scrollable & first in last out
+- transfer nextjs app to create-react-app
 
 
 ## Primary Features:

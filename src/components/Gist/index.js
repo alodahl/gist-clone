@@ -4,6 +4,7 @@ export default function Gist(props) {
 
   const gistStyle = {
     paddingTop: "24px",
+    textAlign: "left",
   };
   const gistBoxStyle = {
       border: "1px solid #eee",
@@ -39,11 +40,9 @@ export default function Gist(props) {
         style={gistBoxStyle}
       >
         <div style={gistFilenameStyle}>
-          <a href="#"
-            className="gist__filename"
-          >
+          <p className="gist__filename">
             {props.filename}
-          </a>
+          </p>
         </div>
         <div style={gistTextStyle} >
           <p

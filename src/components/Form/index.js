@@ -65,15 +65,7 @@ export default class Form extends React.Component {
     render() {
 
       let submitEnabled = this.props.filename.length > 0 && this.props.textarea.length > 0;
-      let buttonStyle = function() {
-        if (submitEnabled && this.props.new){
-          return this.updateButton;
-        } else if (submitEnabled) {
-          return this.enabledSubmitButton;
-        } else {
-          return this.disabledSubmitButton;
-        }
-      }
+      
         return (
           <form className="form" style={this.formStyle}>
               <fieldset className="form__description" style={this.fieldsetStyle}>
