@@ -8,8 +8,10 @@
     "mongoose": "^5.3.8",
     "next": "^7.0.2",
     "normalize.css": "^8.0.0",
+    "query-string": "^6.2.0",
     "react": "^16.6.0",
-    "react-dom": "^16.6.0"
+    "react-dom": "^16.6.0",
+    "react-router-dom": "^4.4.0-beta.6"
   },
   "devDependencies": {},
   "scripts": {

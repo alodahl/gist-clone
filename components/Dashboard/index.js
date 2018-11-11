@@ -1,3 +1,4 @@
+import queryString from 'query-string';
 import React from "react";
 import Navbar from "../Navbar";
 import Form from "../Form";
@@ -11,7 +12,7 @@ export default class Dashboard extends React.Component {
       toggleToGist: false,
       gists: [
         {
-          description: "woo",
+          description: "wu",
           filename: "tang",
           textarea: "clan",
         },
@@ -30,6 +31,12 @@ export default class Dashboard extends React.Component {
       currentGistIndex: "",
     };
   }
+
+query = "";
+
+componentDidMount() {
+  const query = queryString.parse(this);
+}
 
   dashboardStyle = {
     padding: "0",
@@ -55,6 +62,7 @@ export default class Dashboard extends React.Component {
 
   handleThumbnailClick(e) {
     e.preventDefault();
+    console.log("query", query);
     let fileName = JSON.parse(e.target.getAttribute("fileName"));
     this.state.gists.find( (gist, index) => {
       if ( gist.filename == fileName ) {

@@ -1,4 +1,5 @@
 import React from "react";
+import Link from 'next/link';
 import Thumbnail from '../Thumbnail';
 
 export default function ThumbnailMenu(props) {
@@ -16,7 +17,9 @@ export default function ThumbnailMenu(props) {
 
   const menuList = props.gists.map((gist, index) => {
     return(
-      <Thumbnail key={ index } handleThumbnailClick={props.handleThumbnailClick} { ...gist } />
+      <Link key={ index } href={`?filename=${gist.filename}&edit=false`}>
+        <Thumbnail handleThumbnailClick={props.handleThumbnailClick} { ...gist } />
+      </Link>
     );
   });
 

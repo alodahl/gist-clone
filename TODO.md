@@ -4,7 +4,7 @@ Due date: Nov. 12
 
 ## Tasks:
 
-- Ability to view and update gists in a web browser using a unique URL
+- Ability to view and update gists in a web browser using a unique URL: ?filename=something&edit=true
 
 ## Complete
 
