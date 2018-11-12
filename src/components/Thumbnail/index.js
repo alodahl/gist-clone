@@ -40,7 +40,7 @@ export default function Thumbnail(props) {
   return (
     <div
       filename={fileName}
-      className="gist"
+      className="thumbnail"
       style={divStyle}
       role= "button"
       onClick={props.handleThumbnailClick}

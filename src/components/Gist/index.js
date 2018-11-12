@@ -75,6 +75,7 @@ export default function Gist(props) {
       </div>
       <button
         type="button"
+        className="gist__button--edit"
         onClick={props.handleEdit}
         style={editButtonStyle}
       >
