@@ -5,7 +5,8 @@ Due date: Nov. 12
 ## Tasks:
 
 - Ability to view and update gists in a web browser using a unique URL
-- add enzyme tests
+- add enzyme tests to frontend
+- add chai api tests
 
 ## Complete
 
