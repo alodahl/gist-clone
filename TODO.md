@@ -7,7 +7,7 @@ Due date: Nov. 12
 - Ability to view and update gists in a web browser using a unique URL
 - delete gists!
 - create API
-- add enzyme tests
+- add chai api tests
 
 ## Complete
 
@@ -21,6 +21,11 @@ Due date: Nov. 12
 - add edit button that brings back autofilled form with "update" instead of create on submit button
 - make menu scrollable & first in last out
 - transfer nextjs app to create-react-app
+- add enzyme tests to frontend
+  - [X] smoke tests
+  - [X] renders text
+  - [X] renders children
+  - [X] button actions - 2 of many
 
 
 ## Primary Features:
