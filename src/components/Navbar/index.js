@@ -7,7 +7,6 @@ export default class Navbar extends React.Component {
   }
 
   navbarStyle = {
-    fontFamily: "Segoe UI,Helvetica,Arial,sans-serif",
     position: "absolute",
     top: "0",
     left: "0",
@@ -21,10 +20,9 @@ export default class Navbar extends React.Component {
     margin: "0 auto",
   }
   gistCloneStyle = {
-    float: "left",
     display: "inline",
     margin: "0 20px",
-    fontWeight: "100",
+    fontWeight: "300",
     fontSize: "28px",
     backgroundColor: "#24292e",
     border: "none",
@@ -32,11 +30,10 @@ export default class Navbar extends React.Component {
   newGistStyle = {
     color: "white",
     float: "right",
-    display: "inline",
     margin: "0 20px",
     fontSize: "14px",
-    lineHeight: "54px",
     cursor: "pointer",
+    fontWeight: "800",
   }
 
   render() {

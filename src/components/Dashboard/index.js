@@ -55,24 +55,27 @@ export default class Dashboard extends React.Component {
 
   handleThumbnailClick(e) {
     e.preventDefault();
+    console.log(e.target);
     let fileName = JSON.parse(e.target.getAttribute("fileName"));
     let gistIndex;
-    let gist = this.state.gists.find( function(gist, index) {
-      if ( gist.filename === fileName ) {
-        gistIndex = index;
-        return gist;
-      }
-    })
-    this.setState({ toggleToGist: true });
-    this.setState( {
-      currentGist: {
-        description: gist.description,
-        filename: gist.filename,
-        textarea: gist.textarea,
-        new: false,
-      }
-    } );
-    this.setState( { currentGistIndex: gistIndex });
+    if (fileName) {
+      let gist = this.state.gists.find( function(gist, index) {
+        if ( gist.filename === fileName ) {
+          gistIndex = index;
+          return gist;
+        }
+      })
+      this.setState({ toggleToGist: true });
+      this.setState( {
+        currentGist: {
+          description: gist.description,
+          filename: gist.filename,
+          textarea: gist.textarea,
+          new: false,
+        }
+      } );
+      this.setState( { currentGistIndex: gistIndex });
+    }
   }
 
   handleDescription(e) {

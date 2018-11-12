@@ -25,7 +25,6 @@ export default class Form extends React.Component {
     border: '1px solid #ccc',
     padding: "0 8px",
     fontSize: "14px",
-    fontFamily: "Segoe UI,Helvetica,Arial,sans-serif",
     wordBreak: "break-all",
   }
   descriptionStyle = {
@@ -65,7 +64,7 @@ export default class Form extends React.Component {
     render() {
 
       let submitEnabled = this.props.filename.length > 0 && this.props.textarea.length > 0;
-      
+
         return (
           <form className="form" style={this.formStyle}>
               <fieldset className="form__description" style={this.fieldsetStyle}>
