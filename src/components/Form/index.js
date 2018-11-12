@@ -77,7 +77,6 @@ export default class Form extends React.Component {
                   id="description"
                   onChange={this.props.handleDescription}
                   value={this.props.description}
-                  required
                 />
               </fieldset>
               <fieldset className="form__filename" style={this.fieldsetStyle}>
@@ -90,7 +89,6 @@ export default class Form extends React.Component {
                   id="filename"
                   onChange={this.props.handleFilename}
                   value={this.props.filename}
-                  required
                   autoFocus
                 />
                 <label htmlFor="textarea" className="form__textarea--label"/>
@@ -102,7 +100,6 @@ export default class Form extends React.Component {
                   style={this.textareaStyle}
                   onChange={this.props.handleTextarea}
                   value={this.props.textarea}
-                  required
                 />
               </fieldset>
               <button
