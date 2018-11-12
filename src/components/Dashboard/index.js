@@ -64,6 +64,7 @@ export default class Dashboard extends React.Component {
           gistIndex = index;
           return gist;
         }
+        return null;
       })
       this.setState({ toggleToGist: true });
       this.setState( {
@@ -109,6 +110,24 @@ export default class Dashboard extends React.Component {
     this.setState({ toggleToGist: false });
   }
 
+  handleDelete(event) {
+    event.preventDefault();
+    let index = this.state.currentGistIndex;
+    if (index !== "") {
+      let gists = this.state.gists;
+      delete(gists[this.state.currentGistIndex]);
+    }
+    this.setState({ toggleToGist: false });
+    this.setState({ currentGist: {
+      description: "",
+      filename: "",
+      textarea: "",
+      new: true,
+      }
+    });
+     this.setState({ currentGistIndex: this.state.gists.length });
+  }
+
 
     render() {
         return (
@@ -127,7 +146,8 @@ export default class Dashboard extends React.Component {
             {
               this.state.toggleToGist
               ?<Gist { ...this.state.currentGist }
-                handleEdit={e => this.handleEdit(e)}/>
+                handleEdit={e => this.handleEdit(e)}
+                handleDelete={e => this.handleDelete(e)}/>
               :<Form
                 { ...this.state.currentGist }
                 handleDescription={e => this.handleDescription(e)}
