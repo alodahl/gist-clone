@@ -14,9 +14,9 @@ export default function Thumbnail(props) {
   const iconStyle = {
     float: "left",
     height: "46px",
+    cursor: "auto"
   };
   const thumbTextStyle = {
-    fontFamily: "Segoe UI,Helvetica,Arial,sans-serif",
     float: "left",
     padding: "4px 0",
   };
@@ -35,7 +35,6 @@ export default function Thumbnail(props) {
     ...filenameTextStyle,
     fontSize: "12px",
     color: "#586069",
-    fontWeight: "400",
   };
 
   return (

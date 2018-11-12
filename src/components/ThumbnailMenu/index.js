@@ -12,6 +12,7 @@ export default function ThumbnailMenu(props) {
     backgroundColor: "#fafbfc",
     overflow: "auto",
     whiteSpace: "nowrap",
+    textAlign: "left",
   };
 
   const menuList = props.gists.map((gist, index) => {

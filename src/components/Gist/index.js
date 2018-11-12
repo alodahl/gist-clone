@@ -3,19 +3,31 @@ import React from "react";
 export default function Gist(props) {
 
   const gistStyle = {
-    paddingTop: "24px",
+    padding: "24px 8px",
+    textAlign: "left",
   };
   const gistBoxStyle = {
       border: "1px solid #eee",
       fontFamily: "SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace",
       fontSize: "12px",
   };
+  const gistDescriptionStyle = {
+    fontSize: "14px",
+  };
   const gistFilenameStyle = {
-      backgroundColor: "#ccc",
+      backgroundColor: "#fafbfc",
       padding: "10px 5px",
   };
+  const gistFilenameTextStyle = {
+      display: "inline",
+      textDecoration: "none",
+      color: "#0366d6",
+      fontSize: "12px",
+      fontWeight: "600",
+      padding: "8px",
+  };
   const gistTextStyle = {
-      padding: "10px 5px",
+      padding: "0 30px",
   };
   const editButtonStyle = {
     float: "right",
@@ -33,17 +45,16 @@ export default function Gist(props) {
       className="gist"
       style={gistStyle}
     >
-      <p className="gist__description">{props.description}</p>
+      <p style={gistDescriptionStyle}>{props.description}</p>
       <div
         className="gist__box"
         style={gistBoxStyle}
       >
         <div style={gistFilenameStyle}>
-          <a href="#"
-            className="gist__filename"
-          >
+          <svg viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 5L10 7.5 7.5 10l-.75-.75L8.5 7.5 6.75 5.75 7.5 5zm-3 0L2 7.5 4.5 10l.75-.75L3.5 7.5l1.75-1.75L4.5 5zM0 13V2c0-.55.45-1 1-1h10c.55 0 1 .45 1 1v11c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1zm1 0h10V2H1v11z"></path></svg>
+          <p style={gistFilenameTextStyle}>
             {props.filename}
-          </a>
+          </p>
         </div>
         <div style={gistTextStyle} >
           <p
