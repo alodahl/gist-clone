@@ -5,6 +5,8 @@ Due date: Nov. 12
 ## Tasks:
 
 - Ability to view and update gists in a web browser using a unique URL
+- delete gists!
+- create API
 - add enzyme tests
 
 ## Complete
