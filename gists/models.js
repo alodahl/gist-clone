@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const gistSchema = mongoose.Schema({
-  description: {type: String, default: "NEW PROJECT"},
+  description: {type: String, default: "new gist"},
   filename: {type: String, default: ""},
   textarea: {type: String, default: ""},
   creationDate: {type: Date, default: new Date()},
-  user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  // user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
 });
 
 gistSchema.methods.apiRepr = function() {
@@ -15,7 +15,6 @@ gistSchema.methods.apiRepr = function() {
     filename: this.filename,
     creationDate: this.creationDate,
     textarea: this.textarea,
-    creationDate: this.creationDate,
   };
 }
 

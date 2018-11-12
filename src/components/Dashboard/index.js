@@ -3,6 +3,7 @@ import Navbar from "../Navbar";
 import Form from "../Form";
 import Gist from "../Gist";
 import ThumbnailMenu from "../ThumbnailMenu";
+import $ from "jquery";
 
 export default class Dashboard extends React.Component {
   constructor(props) {
@@ -40,7 +41,81 @@ export default class Dashboard extends React.Component {
     paddingTop: "16px",
   }
 
-  handleNewGist(event) {
+  componentDidMount() {
+    this.getGistsFromApi();
+  }
+
+  getGistsFromApi() {
+    const settings = {
+      url: '/gists',
+      // headers: { 'Authorization': `Bearer ${state.token}` },
+      dataType: 'json',
+      type: 'GET',
+      success: function(freshGists) {
+        this.setState({ gists: freshGists });
+        console.log(freshGists);
+      },
+      error: function(data) {
+        console.log("Error: API could not answer your GET request.");
+      }
+    };
+    $.ajax(settings);
+  }
+
+  // saveGistToApi(gistData) {
+  //   const settings = {
+  //     url: `/gists/${state.idOfGistBeingEdited}`,
+  //     // headers: { 'Authorization': `Bearer ${state.token}` },
+  //     data: gistData,
+  //     dataType: 'json',
+  //     type: state.idOfGistBeingEdited? 'PUT' : 'POST',
+  //     success: function(gist) {
+  //       if(state.idOfGistBeingEdited){
+  //         for(var i = 0; i < this.state.gists.length; i++) {
+  //           if(this.state.gists[i].id == state.idOfGistBeingEdited) {
+  //              this.setState(this.)
+  //           }
+  //         }
+  //         renderGists(state.gists)
+  //       }else{
+  //         state.gists.push(gist)
+  //         renderGists(state.gists)
+  //       }
+  //       closeModal();
+  //       clearForm();
+  //     },
+  //     error: function(data) {
+  //       console.log("Error: API could not answer your save request.");
+  //     }
+  //   };
+  //   $.ajax(settings);
+  // }
+
+  // deleteGistFromApi() {
+  //   const settings = {
+  //     url: `/gists/${state.idOfGistBeingEdited}`,
+  //     headers: { 'Authorization': `Bearer ${state.token}` },
+  //     dataType: 'json',
+  //     type: 'DELETE',
+  //     success: function() {
+  //       for(var i = 0; i < state.gists.length; i++) {
+  //         if(state.gists[i].id == state.idOfGistBeingEdited) {
+  //             state.gists.splice(i, 1);
+  //             break;
+  //         }
+  //       }
+  //       renderGists(state.gists)
+  //       closeModal();
+  //     },
+  //     error: function(data) {
+  //       console.log("Error: API could not answer your delete request.");
+  //       alert("Error: " + data.responseJSON.message);
+  //     }
+  //   };
+  //   $.ajax(settings);
+  // }
+
+  handleNewGistButton(event) {
     event.preventDefault();
     this.setState({ toggleToGist: false });
     this.setState({ currentGist: {
@@ -135,7 +210,7 @@ export default class Dashboard extends React.Component {
             className="dashboard"
             style={this.dashboardStyle}>
             <Navbar
-              handleNewGist={e => this.handleNewGist(e)}
+              handleNewGist={e => this.handleNewGistButton(e)}
             />
             <ThumbnailMenu { ...this.state }
               handleThumbnailClick={e => this.handleThumbnailClick(e)}

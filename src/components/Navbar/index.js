@@ -38,7 +38,8 @@ export default class Navbar extends React.Component {
 
   render() {
     return(
-      <div style={this.navbarStyle}>
+      <div style={this.navbarStyle}
+            className="navbar">
         <div style={this.innerNavStyle}>
           <h1 style={this.gistCloneStyle}>
           <b>Gist</b>Clone

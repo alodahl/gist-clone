@@ -5,7 +5,9 @@ const next = require("next");
 // const morgan = require("morgan");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-// const { API_AUDIENCE, API_URL, DATABASE_URL, PORT } = require("./config");
+const { DATABASE_URL, PORT } = require("./config");
+
+const { router: gistsRouter } = require("./gists");
 
 // const { router: usersRouter } = require("./users");
 // const { router: helpRouter } = require("./help");
@@ -33,10 +35,11 @@ nextApp.prepare().then(() => {
   app.use(morgan("common"));
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
-  app.post("/api/users/", usersRouter);
-  app.get("/api/users/pick-a-mentee", jwtCheck, usersRouter);
-  app.use("/api/users", jwtCheck, usersRouter);
-  app.use("/api/help", jwtCheck, helpRouter);
+  app.get("/gists", gistsRouter);
+  // app.post("/api/users/", usersRouter);
+  // app.get("/api/users/pick-a-mentee", jwtCheck, usersRouter);
+  // app.use("/api/users", jwtCheck, usersRouter);
+  // app.use("/api/help", jwtCheck, helpRouter);
 
   app.get("*", (req, res) => {
     handle(req, res);
