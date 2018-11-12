@@ -1,9 +1,11 @@
 import React from "react";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Navbar from "../Navbar";
 import Form from "../Form";
 import Gist from "../Gist";
 import ThumbnailMenu from "../ThumbnailMenu";
 import $ from "jquery";
+
 
 export default class Dashboard extends React.Component {
   constructor(props) {
@@ -229,10 +231,13 @@ export default class Dashboard extends React.Component {
                 handleFilename={e => this.handleFilename(e)}
                 handleTextarea={e => this.handleTextarea(e)}
                 handleSubmit={e => this.handleSubmit(e)}
-              />
-            }
+            />
+              }
+                // <Route path="/gists" component={Gist}/>
+                // <Route path="/" component={Form}/>
+              </div>
             </div>
-          </div>
+          </Router>
         );
       }
 

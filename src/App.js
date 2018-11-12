@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Dashboard from "./components/Dashboard"
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div><Dashboard/></div>
-      </div>
+       <Router>
+        <Route path="/" component={Dashboard}/>
+       </Router>
     );
   }
 }
