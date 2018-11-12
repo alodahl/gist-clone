@@ -1,8 +1,10 @@
 import React from "react";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Navbar from "../Navbar";
 import Form from "../Form";
 import Gist from "../Gist";
 import ThumbnailMenu from "../ThumbnailMenu";
+
 
 export default class Dashboard extends React.Component {
   constructor(props) {
@@ -64,6 +66,7 @@ export default class Dashboard extends React.Component {
           gistIndex = index;
           return gist;
         }
+        return null;
       })
       this.setState({ toggleToGist: true });
       this.setState( {
@@ -112,32 +115,36 @@ export default class Dashboard extends React.Component {
 
     render() {
         return (
-          <div
-            className="dashboard"
-            style={this.dashboardStyle}>
-            <Navbar
-              handleNewGist={e => this.handleNewGist(e)}
-            />
-            <ThumbnailMenu { ...this.state }
-              handleThumbnailClick={e => this.handleThumbnailClick(e)}
-            />
+          <Router>
             <div
-              style={this.dashboardMainStyle}
-            >
-            {
-              this.state.toggleToGist
-              ?<Gist { ...this.state.currentGist }
-                handleEdit={e => this.handleEdit(e)}/>
-              :<Form
-                { ...this.state.currentGist }
-                handleDescription={e => this.handleDescription(e)}
-                handleFilename={e => this.handleFilename(e)}
-                handleTextarea={e => this.handleTextarea(e)}
-                handleSubmit={e => this.handleSubmit(e)}
+              className="dashboard"
+              style={this.dashboardStyle}>
+              <Navbar
+                handleNewGist={e => this.handleNewGist(e)}
               />
-            }
+              <ThumbnailMenu { ...this.state }
+                handleThumbnailClick={e => this.handleThumbnailClick(e)}
+              />
+              <div
+                style={this.dashboardMainStyle}
+              >
+              {
+                this.state.toggleToGist
+                ?<Gist { ...this.state.currentGist }
+                  handleEdit={e => this.handleEdit(e)}/>
+                :<Form
+                  { ...this.state.currentGist }
+                  handleDescription={e => this.handleDescription(e)}
+                  handleFilename={e => this.handleFilename(e)}
+                  handleTextarea={e => this.handleTextarea(e)}
+                  handleSubmit={e => this.handleSubmit(e)}
+                />
+              }
+                // <Route path="/gists" component={Gist}/>
+                // <Route path="/" component={Form}/>
+              </div>
             </div>
-          </div>
+          </Router>
         );
       }
 
