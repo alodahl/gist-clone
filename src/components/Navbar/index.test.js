@@ -7,6 +7,18 @@ import { shallow, mount, render } from 'enzyme';
 
 const fakeState = {
   toggleToGist: true,
+  gists: [
+    {
+      description: "wu",
+      filename: "tang",
+      textarea: "clan",
+    },
+    {
+      description: "mary",
+      filename: "tyler",
+      textarea: "moore",
+    },
+  ],
 }
 
 const clickProp = function(event) {
@@ -32,16 +44,4 @@ it("Renders the text", () => {
   const wrapper = shallow(<Navbar />);
   expect(wrapper.find("h1").text()).toEqual("GistClone");
   expect(wrapper.find("h2").text()).toEqual("New gist");
-});
-
-it("Registers click events", () => {
-  const wrapper = mount(<Navbar { ...fakeState } handleNewGist={clickProp} />);
-  const dashboard = mount(<Dashboard />);
-  console.log(dashboard.debug());
-  expect(dashboard.contains("div.gist")).toEqual(true);
-  expect(dashboard.contains("form.form")).toEqual(false);
-  wrapper.find('h2').simulate('click');
-  expect(dashboard.contains("div.gist")).toEqual(false);
-  expect(dashboard.contains("form.form")).toEqual(true);
-
 });

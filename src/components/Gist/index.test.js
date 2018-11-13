@@ -25,6 +25,6 @@ it("Renders the text", () => {
 
 it("Renders the buttons", () => {
   const wrapper = shallow(<Gist { ...fakeProps } />);
-  expect(wrapper.find("button").text()).toEqual("edit gist");
-  expect(wrapper.find("button").hasClass("gist__button--edit")).toEqual(true);
+  expect(wrapper.find("button").last().text()).toEqual("edit gist");
+  expect(wrapper.find("button").first().text()).toEqual("Delete");
 });

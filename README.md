@@ -26,7 +26,7 @@ Bundles the app into static files for production.
   yarn test
 ```
 
-Starts the test runner.
+Runs enzyme tests for the React front end.
 
 
 ## Learn More

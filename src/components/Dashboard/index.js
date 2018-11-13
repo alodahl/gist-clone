@@ -1,5 +1,4 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Navbar from "../Navbar";
 import Form from "../Form";
 import Gist from "../Gist";
@@ -42,76 +41,22 @@ export default class Dashboard extends React.Component {
     padding: "8px",
     paddingTop: "16px",
   }
-
-  componentDidMount() {
-    this.getGistsFromApi();
-  }
-
-  getGistsFromApi() {
-    const settings = {
-      url: '/gists',
-      // headers: { 'Authorization': `Bearer ${state.token}` },
-      dataType: 'json',
-      type: 'GET',
-      success: function(freshGists) {
-        this.setState({ gists: freshGists });
-        console.log(freshGists);
-      },
-      error: function(data) {
-        console.log("Error: API could not answer your GET request.");
-      }
-    };
-    $.ajax(settings);
-  }
-
-  // saveGistToApi(gistData) {
-  //   const settings = {
-  //     url: `/gists/${state.idOfGistBeingEdited}`,
-  //     // headers: { 'Authorization': `Bearer ${state.token}` },
-  //     data: gistData,
-  //     dataType: 'json',
-  //     type: state.idOfGistBeingEdited? 'PUT' : 'POST',
-  //     success: function(gist) {
-  //       if(state.idOfGistBeingEdited){
-  //         for(var i = 0; i < this.state.gists.length; i++) {
-  //           if(this.state.gists[i].id == state.idOfGistBeingEdited) {
-  //              this.setState(this.)
-  //           }
-  //         }
-  //         renderGists(state.gists)
-  //       }else{
-  //         state.gists.push(gist)
-  //         renderGists(state.gists)
-  //       }
-  //       closeModal();
-  //       clearForm();
-  //     },
-  //     error: function(data) {
-  //       console.log("Error: API could not answer your save request.");
-  //     }
-  //   };
-  //   $.ajax(settings);
+  //
+  // componentDidMount() {
+  //   this.getGistsFromApi();
   // }
-
-  // deleteGistFromApi() {
+  //
+  // getGistsFromApi() {
   //   const settings = {
-  //     url: `/gists/${state.idOfGistBeingEdited}`,
-  //     headers: { 'Authorization': `Bearer ${state.token}` },
+  //     url: '/gists',
+  //     // headers: { 'Authorization': `Bearer ${state.token}` },
   //     dataType: 'json',
-  //     type: 'DELETE',
-  //     success: function() {
-  //       for(var i = 0; i < state.gists.length; i++) {
-  //         if(state.gists[i].id == state.idOfGistBeingEdited) {
-  //             state.gists.splice(i, 1);
-  //             break;
-  //         }
-  //       }
-  //       renderGists(state.gists)
-  //       closeModal();
+  //     type: 'GET',
+  //     success: function(freshGists) {
+  //       this.setState({ gists: freshGists });
   //     },
   //     error: function(data) {
-  //       console.log("Error: API could not answer your delete request.");
-  //       alert("Error: " + data.responseJSON.message);
+  //       console.log("Error: API could not answer your GET request.");
   //     }
   //   };
   //   $.ajax(settings);
@@ -132,14 +77,13 @@ export default class Dashboard extends React.Component {
 
   handleThumbnailClick(e) {
     e.preventDefault();
-    console.log(e.target);
     let fileName = JSON.parse(e.target.getAttribute("fileName"));
     let gistIndex;
     if (fileName) {
-      let gist = this.state.gists.find( function(gist, index) {
-        if ( gist.filename === fileName ) {
+      let gist = this.state.gists.find( function(foundGist, index) {
+        if ( foundGist.filename === fileName ) {
           gistIndex = index;
-          return gist;
+          return foundGist;
         }
         return null;
       })
@@ -192,17 +136,9 @@ export default class Dashboard extends React.Component {
     let index = this.state.currentGistIndex;
     if (index !== "") {
       let gists = this.state.gists;
-      delete(gists[this.state.currentGistIndex]);
+      gists.splice(this.state.currentGistIndex, 1);
+      this.handleNewGistButton(event)
     }
-    this.setState({ toggleToGist: false });
-    this.setState({ currentGist: {
-      description: "",
-      filename: "",
-      textarea: "",
-      new: true,
-      }
-    });
-     this.setState({ currentGistIndex: this.state.gists.length });
   }
 
 
@@ -233,11 +169,8 @@ export default class Dashboard extends React.Component {
                 handleSubmit={e => this.handleSubmit(e)}
             />
               }
-                // <Route path="/gists" component={Gist}/>
-                // <Route path="/" component={Form}/>
               </div>
             </div>
-          </Router>
         );
       }
 
