@@ -2,6 +2,8 @@ import React from "react";
 import Navbar from "../Navbar";
 import Form from "../Form";
 import Gist from "../Gist";
+import TodoInput from "../TodoInput";
+
 import ThumbnailMenu from "../ThumbnailMenu";
 
 export default class Dashboard extends React.Component {
@@ -131,6 +133,7 @@ export default class Dashboard extends React.Component {
                 handleSubmit={e => this.handleSubmit(e)}
               />
             }
+            <TodoInput/>
             </div>
           </div>
         );

@@ -6,6 +6,8 @@ Due date: Nov. 12
 
 - Ability to view and update gists in a web browser using a unique URL
 - make menu scrollable
+- Add enzyme tests
+- style gist view
 
 ## Complete
 
